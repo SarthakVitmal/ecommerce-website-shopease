@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+Personal Finance Tracker
+A web application designed to help users track their income, expenses, and budgets with intuitive data visualizations. This project leverages the MERN stack to deliver a full-stack solution for personal finance management.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+1. User Authentication
+Secure user registration and login using JWT authentication.
+Passwords stored using secure hashing (bcrypt).
+2. Income and Expense Management
+Add, edit, and delete income and expense entries.
+Categorize transactions into predefined categories (e.g., Food, Rent, Travel).
+View and manage a history of all transactions.
+3. Budget Tracking
+Set monthly or yearly budget goals.
+Track spending against the set budget in real time.
+4. Data Visualization
+Pie Chart: Displays spending breakdown by category.
+Bar Chart: Shows income vs. expenses over time.
+5. Export Reports
+Download financial data as PDF or Excel files for offline use.
+6. Notifications (Optional)
+Get notified when spending nears or exceeds the budget.
+Technology Stack
+Frontend
+React.js: For building a dynamic user interface.
+Recharts: For creating interactive data visualizations.
+Axios: For communicating with the backend.
+Backend
+Node.js: Server-side runtime environment.
+Express.js: Framework for building RESTful APIs.
+JWT: For secure authentication.
+Database
+MongoDB: For storing user data, transactions, and budgets.
+Mongoose: For schema modeling.
+Additional Tools
+dotenv: For managing environment variables.
+bcrypt: For secure password hashing.
+Cors: To enable cross-origin requests.
+How It Works
+1. User Flow
+Sign Up/Log In:
 
-## Available Scripts
+New users can register and log in securely.
+Token-based authentication ensures secure session management.
+Dashboard:
 
-In the project directory, you can run:
+Users land on a dashboard showing:
+Current month's income and expense totals.
+Spending breakdown (Pie Chart).
+Monthly trends (Bar Chart).
+Add Transactions:
 
-### `npm start`
+Users can add, edit, or delete income/expense entries.
+Each entry includes:
+Type (Income/Expense).
+Category (e.g., Rent, Food).
+Amount and Date.
+Set Budgets:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Users can set budget goals for a specified time period.
+Real-time notifications alert users when they exceed budgets.
+View Reports:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users can download financial summaries as PDF or Excel files.
+2. Backend Flow
+Authentication:
 
-### `npm test`
+Upon registration, user credentials are securely hashed and stored in MongoDB.
+Logged-in users receive a JWT token for session management.
+Transactions:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each transaction is linked to the user's unique ID.
+MongoDB stores all income and expense records.
+APIs:
 
-### `npm run build`
+RESTful APIs manage user data and transactions.
+Example endpoints:
+POST /api/auth/register
+GET /api/transactions
+Data Visualization:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend aggregates data for charts, which are rendered on the frontend.
+Setup and Installation
+Prerequisites
+Node.js and npm installed.
+MongoDB set up locally or on the cloud (e.g., MongoDB Atlas).
+Steps
+Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+git clone https://github.com/your-username/finance-tracker.git
+cd finance-tracker
+Install dependencies for the backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+cd finance-tracker-backend
+npm install
+Set up environment variables:
 
-### `npm run eject`
+Create a .env file in the backend directory.
+Add the following:
+env
+Copy code
+MONGO_URI=your-mongodb-connection-string
+JWT_SECRET=your-secret-key
+PORT=5000
+Start the backend server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+npm start
+Install dependencies for the frontend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copy code
+cd ../finance-tracker-frontend
+npm install
+Start the frontend development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+Copy code
+npm start
+Access the app at http://localhost:3000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Folder Structure
+Frontend
+plaintext
+Copy code
+src/
+├── components/          # Reusable components (e.g., Forms, Charts)
+├── pages/               # Application pages (Login, Dashboard, etc.)
+├── services/            # API calls
+├── App.js               # Main component
+└── index.js             # Entry point
+Backend
+plaintext
+Copy code
+src/
+├── models/              # Mongoose schemas (User, Transaction)
+├── routes/              # API routes (Auth, Transactions)
+├── controllers/         # Business logic
+├── middleware/          # Authentication middleware
+└── server.js            # Express server setup
+Features to Add in the Future
+Multi-currency support for global users.
+Integration with payment APIs (e.g., Stripe, PayPal).
+Mobile-friendly PWA (Progressive Web App) version.
+AI-based expense predictions and insights.
